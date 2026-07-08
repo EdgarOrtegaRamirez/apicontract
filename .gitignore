@@ -1,6 +1,6 @@
 # Binary outputs
-apicontract
-bin/
+/apicontract
+/bin/
 *.exe
 *.test
 
