@@ -162,7 +162,9 @@ func ParseSpecFromBytes(data []byte) (*Spec, error) {
 	// Store raw data
 	spec.Raw = make(map[string]any)
 	if err := yaml.Unmarshal(data, spec.Raw); err != nil {
-		json.Unmarshal(data, spec.Raw)
+		var tmp map[string]any
+		json.Unmarshal(data, &tmp)
+		spec.Raw = tmp
 	}
 
 	return spec, nil
