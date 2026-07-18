@@ -13,8 +13,8 @@ import (
 type Format string
 
 const (
-	FormatGo       Format = "go"
-	FormatPython   Format = "python"
+	FormatGo         Format = "go"
+	FormatPython     Format = "python"
 	FormatTypeScript Format = "typescript"
 )
 

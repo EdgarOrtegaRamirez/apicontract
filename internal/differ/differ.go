@@ -21,23 +21,23 @@ const (
 
 // Change represents a single API change.
 type Change struct {
-	Type       ChangeType
-	Scope      string // endpoint, parameter, response, schema
-	Severity   string // breaking, non-breaking, informational
-	Path       string
-	Method     string
-	Detail     string
+	Type     ChangeType
+	Scope    string // endpoint, parameter, response, schema
+	Severity string // breaking, non-breaking, informational
+	Path     string
+	Method   string
+	Detail   string
 }
 
 // DiffResult holds the diff between two specs.
 type DiffResult struct {
-	Changes      []Change
-	Breaking     int
-	NonBreaking  int
-	Added        int
-	Removed      int
-	Modified     int
-	Summary      string
+	Changes     []Change
+	Breaking    int
+	NonBreaking int
+	Added       int
+	Removed     int
+	Modified    int
+	Summary     string
 }
 
 // Diff compares two OpenAPI specifications and returns the changes.

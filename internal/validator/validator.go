@@ -14,21 +14,21 @@ import (
 
 // Result represents a single validation result.
 type Result struct {
-	Endpoint  string
-	Method    string
-	Path      string
-	Status    int
-	Valid     bool
-	Issues    []Issue
-	Duration  time.Duration
+	Endpoint string
+	Method   string
+	Path     string
+	Status   int
+	Valid    bool
+	Issues   []Issue
+	Duration time.Duration
 }
 
 // Issue represents a contract violation.
 type Issue struct {
-	Severity    Severity
-	Category    Category
-	Message     string
-	Detail      string
+	Severity Severity
+	Category Category
+	Message  string
+	Detail   string
 }
 
 // Severity levels.
@@ -44,10 +44,10 @@ const (
 type Category string
 
 const (
-	CategoryStatus    Category = "status"
-	CategoryHeaders   Category = "headers"
-	CategorySchema    Category = "schema"
-	CategoryContent   Category = "content"
+	CategoryStatus  Category = "status"
+	CategoryHeaders Category = "headers"
+	CategorySchema  Category = "schema"
+	CategoryContent Category = "content"
 )
 
 // Validator validates HTTP responses against an OpenAPI spec.

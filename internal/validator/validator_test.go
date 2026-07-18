@@ -10,8 +10,8 @@ func TestValidateResponse(t *testing.T) {
 	schema := &parser.Schema{
 		Type: "object",
 		Properties: map[string]*parser.Schema{
-			"id":     {Type: "integer"},
-			"name":   {Type: "string", MinLength: PtrInt(1)},
+			"id":   {Type: "integer"},
+			"name": {Type: "string", MinLength: PtrInt(1)},
 		},
 		Required: []string{"id", "name"},
 	}
@@ -201,5 +201,5 @@ func TestTypeOf(t *testing.T) {
 	}
 }
 
-func PtrInt(i int) *int { return &i }
+func PtrInt(i int) *int           { return &i }
 func PtrFloat(f float64) *float64 { return &f }

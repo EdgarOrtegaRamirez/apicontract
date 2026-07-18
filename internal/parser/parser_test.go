@@ -63,8 +63,8 @@ func TestGetEndpoints(t *testing.T) {
 		Paths: map[string]Path{
 			"/users": {
 				Operations: map[string]Operation{
-					"get":    {OperationID: "listUsers"},
-					"post":   {OperationID: "createUser"},
+					"get":  {OperationID: "listUsers"},
+					"post": {OperationID: "createUser"},
 				},
 			},
 		},

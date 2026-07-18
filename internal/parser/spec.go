@@ -12,22 +12,22 @@ import (
 
 // Spec represents a parsed OpenAPI/Swagger specification.
 type Spec struct {
-	OpenAPI   string            `yaml:"openapi" json:"openapi,omitempty"`
-	Swagger   string            `yaml:"swagger" json:"swagger,omitempty"`
-	Info      Info              `yaml:"info" json:"info"`
-	Paths     map[string]Path   `yaml:"paths" json:"paths"`
-	Servers   []Server          `yaml:"servers" json:"servers,omitempty"`
-	Components *Components    `yaml:"components,omitempty" json:"components,omitempty"`
-	Raw       map[string]any    `yaml:"-" json:"-"`
+	OpenAPI    string          `yaml:"openapi" json:"openapi,omitempty"`
+	Swagger    string          `yaml:"swagger" json:"swagger,omitempty"`
+	Info       Info            `yaml:"info" json:"info"`
+	Paths      map[string]Path `yaml:"paths" json:"paths"`
+	Servers    []Server        `yaml:"servers" json:"servers,omitempty"`
+	Components *Components     `yaml:"components,omitempty" json:"components,omitempty"`
+	Raw        map[string]any  `yaml:"-" json:"-"`
 }
 
 // Info holds metadata about the API.
 type Info struct {
-	Title          string `yaml:"title" json:"title"`
-	Version        string `yaml:"version" json:"version"`
-	Description    string `yaml:"description,omitempty" json:"description,omitempty"`
-	Contact        Contact `yaml:"contact,omitempty" json:"contact,omitempty"`
-	License        License `yaml:"license,omitempty" json:"license,omitempty"`
+	Title       string  `yaml:"title" json:"title"`
+	Version     string  `yaml:"version" json:"version"`
+	Description string  `yaml:"description,omitempty" json:"description,omitempty"`
+	Contact     Contact `yaml:"contact,omitempty" json:"contact,omitempty"`
+	License     License `yaml:"license,omitempty" json:"license,omitempty"`
 }
 
 // Contact holds contact information.
@@ -51,80 +51,80 @@ type Server struct {
 
 // Path represents an OpenAPI path item.
 type Path struct {
-	Summary       string       `yaml:"summary,omitempty" json:"summary,omitempty"`
-	Description   string       `yaml:"description,omitempty" json:"description,omitempty"`
-	Operations    map[string]Operation `yaml:"-" json:"-"`
-	OperationID   string       `yaml:"operationId,omitempty" json:"operationId,omitempty"`
-	Parameters    []Parameter  `yaml:"parameters,omitempty" json:"parameters,omitempty"`
-	RequestBody   *RequestBody `yaml:"requestBody,omitempty" json:"requestBody,omitempty"`
-	Responses     map[string]Response `yaml:"responses,omitempty" json:"responses,omitempty"`
-	Deprecated    *bool      `yaml:"deprecated,omitempty" json:"deprecated,omitempty"`
+	Summary     string               `yaml:"summary,omitempty" json:"summary,omitempty"`
+	Description string               `yaml:"description,omitempty" json:"description,omitempty"`
+	Operations  map[string]Operation `yaml:"-" json:"-"`
+	OperationID string               `yaml:"operationId,omitempty" json:"operationId,omitempty"`
+	Parameters  []Parameter          `yaml:"parameters,omitempty" json:"parameters,omitempty"`
+	RequestBody *RequestBody         `yaml:"requestBody,omitempty" json:"requestBody,omitempty"`
+	Responses   map[string]Response  `yaml:"responses,omitempty" json:"responses,omitempty"`
+	Deprecated  *bool                `yaml:"deprecated,omitempty" json:"deprecated,omitempty"`
 }
 
 // Operation represents an HTTP operation.
 type Operation struct {
-	Summary     string            `yaml:"summary,omitempty" json:"summary,omitempty"`
-	Description string            `yaml:"description,omitempty" json:"description,omitempty"`
-	OperationID string            `yaml:"operationId,omitempty" json:"operationId,omitempty"`
-	Tags        []string          `yaml:"tags,omitempty" json:"tags,omitempty"`
-	Parameters  []Parameter       `yaml:"parameters,omitempty" json:"parameters,omitempty"`
-	RequestBody *RequestBody      `yaml:"requestBody,omitempty" json:"requestBody,omitempty"`
-	Responses   map[string]Response `yaml:"responses,omitempty" json:"responses,omitempty"`
-	Deprecated  *bool             `yaml:"deprecated,omitempty" json:"deprecated,omitempty"`
+	Summary     string                `yaml:"summary,omitempty" json:"summary,omitempty"`
+	Description string                `yaml:"description,omitempty" json:"description,omitempty"`
+	OperationID string                `yaml:"operationId,omitempty" json:"operationId,omitempty"`
+	Tags        []string              `yaml:"tags,omitempty" json:"tags,omitempty"`
+	Parameters  []Parameter           `yaml:"parameters,omitempty" json:"parameters,omitempty"`
+	RequestBody *RequestBody          `yaml:"requestBody,omitempty" json:"requestBody,omitempty"`
+	Responses   map[string]Response   `yaml:"responses,omitempty" json:"responses,omitempty"`
+	Deprecated  *bool                 `yaml:"deprecated,omitempty" json:"deprecated,omitempty"`
 	Security    []map[string][]string `yaml:"security,omitempty" json:"security,omitempty"`
 }
 
 // Parameter represents an OpenAPI parameter.
 type Parameter struct {
-	Name        string   `yaml:"name" json:"name"`
-	In          string   `yaml:"in" json:"in"` // path, query, header, cookie
-	Description string   `yaml:"description,omitempty" json:"description,omitempty"`
-	Required    bool     `yaml:"required,omitempty" json:"required,omitempty"`
-	Schema      *Schema  `yaml:"schema,omitempty" json:"schema,omitempty"`
-	Example     any      `yaml:"example,omitempty" json:"example,omitempty"`
+	Name        string  `yaml:"name" json:"name"`
+	In          string  `yaml:"in" json:"in"` // path, query, header, cookie
+	Description string  `yaml:"description,omitempty" json:"description,omitempty"`
+	Required    bool    `yaml:"required,omitempty" json:"required,omitempty"`
+	Schema      *Schema `yaml:"schema,omitempty" json:"schema,omitempty"`
+	Example     any     `yaml:"example,omitempty" json:"example,omitempty"`
 }
 
 // RequestBody represents an OpenAPI request body.
 type RequestBody struct {
-	Description string            `yaml:"description,omitempty" json:"description,omitempty"`
+	Description string               `yaml:"description,omitempty" json:"description,omitempty"`
 	Content     map[string]MediaType `yaml:"content" json:"content"`
-	Required    bool               `yaml:"required,omitempty" json:"required,omitempty"`
+	Required    bool                 `yaml:"required,omitempty" json:"required,omitempty"`
 }
 
 // MediaType represents a media type in request/response body.
 type MediaType struct {
-	Schema   *Schema `yaml:"schema,omitempty" json:"schema,omitempty"`
-	Example  any     `yaml:"example,omitempty" json:"example,omitempty"`
+	Schema  *Schema `yaml:"schema,omitempty" json:"schema,omitempty"`
+	Example any     `yaml:"example,omitempty" json:"example,omitempty"`
 }
 
 // Response represents an OpenAPI response.
 type Response struct {
-	Description string            `yaml:"description" json:"description"`
-	Headers     map[string]Header `yaml:"headers,omitempty" json:"headers,omitempty"`
+	Description string               `yaml:"description" json:"description"`
+	Headers     map[string]Header    `yaml:"headers,omitempty" json:"headers,omitempty"`
 	Content     map[string]MediaType `yaml:"content,omitempty" json:"content,omitempty"`
 }
 
 // Header represents an OpenAPI response header.
 type Header struct {
-	Description string `yaml:"description,omitempty" json:"description,omitempty"`
+	Description string  `yaml:"description,omitempty" json:"description,omitempty"`
 	Schema      *Schema `yaml:"schema,omitempty" json:"schema,omitempty"`
 }
 
 // Schema represents a JSON Schema (subset used in OpenAPI).
 type Schema struct {
-	Type         string           `yaml:"type,omitempty" json:"type,omitempty"`
-	Description  string           `yaml:"description,omitempty" json:"description,omitempty"`
-	Format       string           `yaml:"format,omitempty" json:"format,omitempty"`
-	Properties   map[string]*Schema `yaml:"properties,omitempty" json:"properties,omitempty"`
-	Required     []string         `yaml:"required,omitempty" json:"required,omitempty"`
-	Items        *Schema          `yaml:"items,omitempty" json:"items,omitempty"`
-	Enum         []any            `yaml:"enum,omitempty" json:"enum,omitempty"`
-	MinLength    *int             `yaml:"minLength,omitempty" json:"minLength,omitempty"`
-	MaxLength    *int             `yaml:"maxLength,omitempty" json:"maxLength,omitempty"`
-	Minimum      *float64         `yaml:"minimum,omitempty" json:"minimum,omitempty"`
-	Maximum      *float64         `yaml:"maximum,omitempty" json:"maximum,omitempty"`
-	Pattern      string           `yaml:"pattern,omitempty" json:"pattern,omitempty"`
-	AdditionalProperties any     `yaml:"additionalProperties,omitempty" json:"additionalProperties,omitempty"`
+	Type                 string             `yaml:"type,omitempty" json:"type,omitempty"`
+	Description          string             `yaml:"description,omitempty" json:"description,omitempty"`
+	Format               string             `yaml:"format,omitempty" json:"format,omitempty"`
+	Properties           map[string]*Schema `yaml:"properties,omitempty" json:"properties,omitempty"`
+	Required             []string           `yaml:"required,omitempty" json:"required,omitempty"`
+	Items                *Schema            `yaml:"items,omitempty" json:"items,omitempty"`
+	Enum                 []any              `yaml:"enum,omitempty" json:"enum,omitempty"`
+	MinLength            *int               `yaml:"minLength,omitempty" json:"minLength,omitempty"`
+	MaxLength            *int               `yaml:"maxLength,omitempty" json:"maxLength,omitempty"`
+	Minimum              *float64           `yaml:"minimum,omitempty" json:"minimum,omitempty"`
+	Maximum              *float64           `yaml:"maximum,omitempty" json:"maximum,omitempty"`
+	Pattern              string             `yaml:"pattern,omitempty" json:"pattern,omitempty"`
+	AdditionalProperties any                `yaml:"additionalProperties,omitempty" json:"additionalProperties,omitempty"`
 }
 
 // Components holds reusable components.
